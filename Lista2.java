@@ -154,7 +154,28 @@ public class Lista2 {
 
     
     
-    public void mostrarDatos(){
+   
+    
+    public void mostrarDatosX() {
+        Proceso2 aux = start;
+
+        System.out.printf("%10s %8s %8s %8s  %16s  %15s %19s" , "NOMBRE", "NÚMERO", "TAMAÑO", "TIEMPO", "TIEMPO LLEGADA", "TIEMPO SALIDA", "TIEMPO EN EJECUCIÓN");
+        System.out.println();
+        System.out.println(
+                "---------------------------------------------------------------------------------------------");
+
+        while (aux != null) {
+            System.out.format("%10s %8s %8s %8s  %16s  %15s %19s", aux.nombre, aux.numero, aux.tamaño, aux.tiempo, aux.tiempoLlegada, aux.tiempoSalida, aux.tiempoEnEjecucion);
+            System.out.println();
+
+            aux = aux.next;
+        }
+
+        System.out.println(
+                "----------------------------------------------------------------------------------------------");
+    }
+    
+     /*public void mostrarDatos(){
         String matriz[][] = new String[size][7];
         matriz[0][0] = "   Nombre   ";
         matriz[0][1] = "   Número   ";
@@ -168,9 +189,7 @@ public class Lista2 {
         for (int c = 0; c < 7; c++) {
             System.out.print(matriz[0][c]);
         }
-        
-        
-    }
+    }*/
     
     /*
     public void mostrarDatos(){
@@ -185,6 +204,8 @@ public class Lista2 {
         }
     }
     */
+    
+    
 }
 
 class Proceso2{

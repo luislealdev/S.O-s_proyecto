@@ -10,13 +10,41 @@ public class Lista {
         Proceso nuevoProceso = new Proceso(nombre, numero, tamaño, tiempo);
         if(start == null){
             start = nuevoProceso;
+            calcularTiempos(nuevoProceso, null);
         }else{
             Proceso aux = start;
             while(aux.next != null){
                 aux = aux.next;
             }aux.next = nuevoProceso;
+            calcularTiempos(nuevoProceso, aux);
         }
         size++;
+    }
+    
+    public void calcularTiempos(Proceso nuevoProceso, Proceso proceso){
+        if(nuevoProceso == start){
+            nuevoProceso.tiempoLlegada = 0;
+            nuevoProceso.tiempoSalida = nuevoProceso.tiempo;
+            nuevoProceso.tiempoEnEjecucion = nuevoProceso.tiempo;
+        }else{
+            nuevoProceso.tiempoLlegada = proceso.tiempoEnEjecucion;
+            nuevoProceso.tiempoSalida = nuevoProceso.tiempoLlegada+nuevoProceso.tiempo;
+            nuevoProceso.tiempoEnEjecucion = nuevoProceso.tiempoSalida;
+        }
+    }
+    
+    public void calcularTiemposDeNuevo(){
+        Proceso aux = start;
+        Proceso vigilante = aux;
+        while(aux.next!= null){
+             if(aux == start){
+                 calcularTiempos(aux, null);
+            }else{
+                 calcularTiempos(aux, vigilante);
+            }
+             vigilante = aux;
+             aux = aux.next;
+        }calcularTiempos(aux, vigilante);
     }
 
     public void elimnarXnombre(String nombre){
@@ -63,6 +91,7 @@ public class Lista {
             menorLista = auxInicioRelativo.numero;
             vueltas--;
         }
+        calcularTiemposDeNuevo();
     }
 
     public void ordenarXtamaño(){
@@ -91,6 +120,8 @@ public class Lista {
             menorLista = auxInicioRelativo.tamaño;
             vueltas--;
         }
+        
+        calcularTiemposDeNuevo();
     }
 
     public void ordenarXtiempo(){
@@ -119,6 +150,7 @@ public class Lista {
             menorLista = auxInicioRelativo.tiempo;
             vueltas--;
         }
+        calcularTiemposDeNuevo();
     }
 
     public void intercambioProceso(Proceso menor, Proceso inicioRelativo){
@@ -138,17 +170,25 @@ public class Lista {
         menor.tiempo = auxTiempo;
     }
 
-    public void mostrarDatos(){
+    public void mostrarDatosX() {
         Proceso aux = start;
 
-        while(aux != null){
-            System.out.println("Nombre: "+aux.nombre);
-            System.out.println("Número: "+aux.numero);
-            System.out.println("Tamaño: "+aux.tamaño);
-            System.out.println("Tiempo: "+aux.tiempo+"\n");
+        System.out.printf("%10s %8s %8s %8s  %16s  %15s %19s" , "NOMBRE", "NÚMERO", "TAMAÑO", "TIEMPO", "TIEMPO LLEGADA", "TIEMPO SALIDA", "TIEMPO EN EJECUCIÓN");
+        System.out.println();
+        System.out.println(
+                "---------------------------------------------------------------------------------------------");
+
+        while (aux != null) {
+            System.out.format("%10s %8s %8s %8s  %16s  %15s %19s", aux.nombre, aux.numero, aux.tamaño, aux.tiempo, aux.tiempoLlegada, aux.tiempoSalida, aux.tiempoEnEjecucion);
+            System.out.println();
+
             aux = aux.next;
         }
+
+        System.out.println(
+                "----------------------------------------------------------------------------------------------");
     }
+    
 }
 
 
@@ -157,6 +197,9 @@ class Proceso{
     int numero;
     int tamaño;
     int tiempo;
+    int tiempoLlegada;
+    int tiempoSalida;
+    int tiempoEnEjecucion;
     Proceso next;
 
     public Proceso(String nombre, int numero, int tamaño, int tiempo){
@@ -164,6 +207,9 @@ class Proceso{
         this.numero = numero;
         this.tamaño = tamaño;
         this.tiempo = tiempo;
+        this.tiempoLlegada = 0;
+        this.tiempoSalida = 0;
+        this.tiempoEnEjecucion = 0;
         this.next = null;
     }
 }

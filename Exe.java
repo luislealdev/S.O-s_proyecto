@@ -1,17 +1,22 @@
 
 package exe;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Exe {
 
     public static void main(String[] args) {
-        Lista2 newList = new Lista2();
-        newList.PUSH("Alfredo", 0, 10, 15);
-        newList.PUSH("Chaires", 0, 20, 20);
-        newList.PUSH("Leal", 0, 30, 45);
+       
+        Lista newList = new Lista();
+        newList.PUSH("Alfredo", 100, 10, 15);
+        newList.PUSH("Chaires", 50, 20, 20);
+        newList.PUSH("Oski", 1, 30, 15);
+        newList.PUSH("Leal", 3, 30, 10);
+        newList.PUSH("Mario", 10, 30, 45);
         
-        //Lista newList = new Lista();
         String nombre;
         int numero, tamaño, tiempo;
         String toDelete = "";
@@ -39,21 +44,21 @@ public class Exe {
                 case 2:
                     System.out.println("<----- Procesos ordenados por tamaño ----->");
                     newList.ordenarXtamaño();
-                    //newList.mostrarDatos();
+                    newList.mostrarDatosX();
                     break;
                 case 3:
                     System.out.println("<----- Procesos ordenados por tiempo ----->");
                     newList.ordenarXtiempo();
-                    //newList.mostrarDatos();
+                    newList.mostrarDatosX();
                     break;
                 case 4:
                     System.out.println("<----- Procesos ordenados por número ----->");
                     newList.ordenarXnumero();
-                    //newList.mostrarDatos();
+                    newList.mostrarDatosX();
                     break;
                 case 5:
                     System.out.println("<----- Procesos registrados ----->\n");
-                    newList.mostrarDatos();
+                    newList.mostrarDatosX();
                     break;
                 case 6:
                     toDelete = JOptionPane.showInputDialog("Nombre del proceso a eliminar: ");
