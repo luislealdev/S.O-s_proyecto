@@ -21,6 +21,21 @@ public class Lista {
         size++;
     }
     
+    public void PUSH(Proceso proceso){
+        Proceso nuevoProceso = new Proceso(proceso);
+        if(start == null){
+            start = nuevoProceso;
+            calcularTiempos(nuevoProceso, null);
+        }else{
+            Proceso aux = start;
+            while(aux.next != null){
+                aux = aux.next;
+            }aux.next = nuevoProceso;
+            calcularTiempos(nuevoProceso, aux);
+        }
+        size++;
+    }
+    
     public void calcularTiempos(Proceso nuevoProceso, Proceso proceso){
         if(nuevoProceso == start){
             nuevoProceso.tiempoLlegada = 0;

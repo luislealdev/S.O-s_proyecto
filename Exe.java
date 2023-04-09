@@ -20,7 +20,7 @@ public class Exe {
         Lista lista_ejecucion = new Lista();
         
         for (int i = 0; i < 3; i++) {
-            //lista_ejecucion.PUSH(lista_espera.POP_start());
+            lista_ejecucion.PUSH(lista_espera.POP_start());
         }
         
         String nombre;
