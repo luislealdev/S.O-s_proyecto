@@ -47,21 +47,10 @@ public class Lista {
         }calcularTiempos(aux, vigilante);
     }
 
-    public void elimnarXnombre(String nombre){
+    public Proceso POP_start(){
         Proceso aux = start;
-        if(aux.nombre.equals(nombre)){
-            start = aux.next;
-        }else{
-            while(aux.next != null && !aux.next.nombre.equals(nombre)){
-                aux = aux.next;
-            }
-        }
-
-        if(aux.next != null){
-            aux.next = aux.next.next;
-        }else{
-            System.out.println("EL proceso con el nombre "+ nombre+" no existe");
-        }
+        start = start.next;
+        return aux;
     }
 
     public void ordenarXnumero(){
@@ -212,5 +201,32 @@ class Proceso{
         this.tiempoEnEjecucion = 0;
         this.next = null;
     }
+    
+    public Proceso(Proceso proceso){
+        this.nombre = proceso.nombre;
+        this.numero = proceso.numero;
+        this.tamaño = proceso.tamaño;
+        this.tiempo = proceso.tiempo;
+        this.tiempoLlegada = 0;
+        this.tiempoSalida = 0;
+        this.tiempoEnEjecucion = 0;
+        this.next = null;
+    }
 }
 
+/*public void elimnarXnombre(String nombre){
+        Proceso aux = start;
+        if(aux.nombre.equals(nombre)){
+            start = aux.next;
+        }else{
+            while(aux.next != null && !aux.next.nombre.equals(nombre)){
+                aux = aux.next;
+            }
+        }
+
+        if(aux.next != null){
+            aux.next = aux.next.next;
+        }else{
+            System.out.println("EL proceso con el nombre "+ nombre+" no existe");
+        }
+    }*/

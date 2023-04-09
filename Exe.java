@@ -1,21 +1,27 @@
 
 package exe;
 
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Exe {
 
     public static void main(String[] args) {
        
-        Lista newList = new Lista();
-        newList.PUSH("Alfredo", 100, 10, 15);
-        newList.PUSH("Chaires", 50, 20, 20);
-        newList.PUSH("Oski", 1, 30, 15);
-        newList.PUSH("Leal", 3, 30, 10);
-        newList.PUSH("Mario", 10, 30, 45);
+        Lista lista_espera = new Lista();
+        lista_espera.PUSH("Alfredo", 100, 10, 15);
+        lista_espera.PUSH("Chaires", 50, 20, 20);
+        lista_espera.PUSH("Oski", 1, 30, 15);
+        lista_espera.PUSH("Leal", 3, 30, 10);
+        lista_espera.PUSH("Mario", 10, 30, 45);
+        lista_espera.PUSH("Tristeza", 1, 30, 15);
+        lista_espera.PUSH("La miss", 3, 30, 10);
+        lista_espera.PUSH("Mi ruca", 10, 30, 45);
+        
+        Lista lista_ejecucion = new Lista();
+        
+        for (int i = 0; i < 3; i++) {
+            //lista_ejecucion.PUSH(lista_espera.POP_start());
+        }
         
         String nombre;
         int numero, tamaño, tiempo;
@@ -39,30 +45,30 @@ public class Exe {
                     numero = Integer.parseInt(JOptionPane.showInputDialog("Insertar número: "));
                     tamaño = Integer.parseInt(JOptionPane.showInputDialog("Insertar tamaño: "));
                     tiempo = Integer.parseInt(JOptionPane.showInputDialog("Insertar tiempo: "));
-                    newList.PUSH(nombre, numero, tamaño, tiempo); 
+                    lista_espera.PUSH(nombre, numero, tamaño, tiempo); 
                     break;
                 case 2:
                     System.out.println("<----- Procesos ordenados por tamaño ----->");
-                    newList.ordenarXtamaño();
-                    newList.mostrarDatosX();
+                    lista_espera.ordenarXtamaño();
+                    lista_espera.mostrarDatosX();
                     break;
                 case 3:
                     System.out.println("<----- Procesos ordenados por tiempo ----->");
-                    newList.ordenarXtiempo();
-                    newList.mostrarDatosX();
+                    lista_espera.ordenarXtiempo();
+                    lista_espera.mostrarDatosX();
                     break;
                 case 4:
                     System.out.println("<----- Procesos ordenados por número ----->");
-                    newList.ordenarXnumero();
-                    newList.mostrarDatosX();
+                    lista_espera.ordenarXnumero();
+                    lista_espera.mostrarDatosX();
                     break;
                 case 5:
                     System.out.println("<----- Procesos registrados ----->\n");
-                    newList.mostrarDatosX();
+                    lista_espera.mostrarDatosX();
                     break;
                 case 6:
                     toDelete = JOptionPane.showInputDialog("Nombre del proceso a eliminar: ");
-                    //newList.elimnarXnombre(toDelete);
+                    //lista_espera.elimnarXnombre(toDelete);
                     break;
                 default:
                     System.out.println("\nLa opción seleccionada no es válida");
