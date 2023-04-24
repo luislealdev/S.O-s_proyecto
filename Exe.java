@@ -9,13 +9,12 @@ public class Exe {
        
         Lista lista_espera = new Lista();
         lista_espera.PUSH("Alfredo", 100, 10, 15);
-        lista_espera.PUSH("Chaires", 50, 20, 20);
-        lista_espera.PUSH("Oski", 1, 30, 15);
-        lista_espera.PUSH("Leal", 3, 30, 10);
-        lista_espera.PUSH("Mario", 10, 30, 45);
-        lista_espera.PUSH("Tristeza", 1, 30, 15);
-        lista_espera.PUSH("La miss", 3, 30, 10);
-        lista_espera.PUSH("Mi ruca", 10, 30, 45);
+        lista_espera.PUSH("Chaires", 50, 5, 12);
+        lista_espera.PUSH("Oski", 1, 15, 8);
+        lista_espera.PUSH("Leal", 3, 20, 3);
+        lista_espera.PUSH("Mario", 10, 15, 7);
+        lista_espera.PUSH("Tristeza", 1, 20, 4);
+        lista_espera.PUSH("La miss", 3, 10, 8);
         
         Lista lista_ejecucion = new Lista();
         
