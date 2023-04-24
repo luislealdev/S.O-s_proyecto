@@ -4,6 +4,7 @@ package exe;
 public class Lista_Procesos{
     Proceso start = null;
     int size = 0;
+    
     int tiempos[] = new int[3];
 
     public void PUSH(String nombre, int numero, int tamaño, int tiempo){
@@ -30,6 +31,7 @@ public class Lista_Procesos{
                     aux = aux.next;
                 }aux.next = nuevoProceso;
                  calcularTiempos(nuevoProceso);
+                  ordenarTiempos();
         }
     }
     
@@ -37,7 +39,6 @@ public class Lista_Procesos{
         nuevoProceso.tiempoLlegada = tiempos[0];
         nuevoProceso.tiempoSalida = tiempos[0] + nuevoProceso.tiempo;
         tiempos[0] = nuevoProceso.tiempoSalida;
-        ordenarTiempos();
     } 
     
     //Métoo burbuja porque tengo entendido que gasta menos recursos que los demás (en este caso que son solo 3 números
