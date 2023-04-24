@@ -1,13 +1,14 @@
-
 package exe;
 
 import javax.swing.JOptionPane;
 
 public class Exe {
 
+    static int tiempos[] = {15, 8, 12};
+
     public static void main(String[] args) {
-       
-        Lista lista_espera = new Lista();
+
+        /*Lista lista_espera = new Lista();
         lista_espera.PUSH("Alfredo", 100, 10, 15);
         lista_espera.PUSH("Chaires", 50, 20, 20);
         lista_espera.PUSH("Oski", 1, 30, 15);
@@ -74,8 +75,28 @@ public class Exe {
                     System.out.println("\nLa opción seleccionada no es válida");
                     break;
             }
-        }while(option != 7);
-        
+        }while(option != 7);*/
+        ordenarTiempos();
+
     }
-    
+
+    //Métoo burbuja porque tengo entendico que gasta menos recursos que los demás
+    public static void ordenarTiempos() {
+        int menorIndex;
+        for (int j = 0; j < 3; j++) {
+            menorIndex = j;
+            for (int i = 0; i < 3; i++) {
+                if (tiempos[i] < tiempos[menorIndex]) {
+                    intercambio(i, menorIndex);
+                    menorIndex = i;
+                }
+            }
+        }
+    }
+
+    public static void intercambio(int indexActual, int menorIndex) {
+        int aux = tiempos[indexActual];
+        tiempos[indexActual] = tiempos[menorIndex];
+        tiempos[menorIndex] = aux;
+    }
 }
