@@ -24,9 +24,9 @@ public class Exe {
 
         String menuFormat = "Escoja una opción\n"
                 + "1.- Capturar nuevo proceso\n"
-                /*+ "2.- Ordenar lista por tamaño\n"
+                + "2.- Ordenar lista por tamaño\n"
                 + "3.- Ordenar lista por tiempo\n"
-                + "4- Ordenar lista por número\n"*/
+                + "4- Ordenar lista por número\n"
                 + "5.- Mostrar datos\n"
                 + "6.- Elimnar proceso por número\n"
                 + "7.- Salir del menú\n";
@@ -71,9 +71,23 @@ public class Exe {
             }
         }while(option != 7);
         ordenarTiempos();
-
+    
     }
 
+    public static void ordenarTiempos2(){
+        int menorIndex = 0;
+        int vuelta = 0;
+        
+        while(vuelta < 3){
+            for (int i = vuelta; i < vuelta-3; i++) {
+                if(tiempos[i] < tiempos[menorIndex] && tiempos[i] != 0){
+                    menorIndex = i;
+                }
+            }
+            intercambio(vuelta, menorIndex);
+            vuelta++;
+        }
+    }
     //Métoo burbuja porque tengo entendico que gasta menos recursos que los demás
     public static void ordenarTiempos() {
         int menorIndex;

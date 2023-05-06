@@ -24,15 +24,19 @@ public class Lista_Procesos{
             }
             nuevoProceso.tiempoSalida = nuevoProceso.tiempo;
             tiempos[size-1] = nuevoProceso.tiempo;
-            ordenarTiempos();
         }else{
                 Proceso aux = start;
                 while(aux.next != null){
                     aux = aux.next;
                 }aux.next = nuevoProceso;
-                 calcularTiempos(nuevoProceso);
-                  ordenarTiempos();
-        }
+                calcularTiempos(nuevoProceso);
+        }ordenarTiempos();
+        
+        
+        //CADA QUE AGREGUE UN NUUVEO PROCESO MOSTRAREMOS LOS TIEMPOS QUE ENTREGE
+        for (int i = 0; i < 3; i++) {
+            System.out.print(tiempos[i]+"-");
+        }System.out.println("");
     }
     
     public void calcularTiempos(Proceso nuevoProceso){
@@ -42,18 +46,23 @@ public class Lista_Procesos{
     } 
     
     //Métoo burbuja porque tengo entendido que gasta menos recursos que los demás (en este caso que son solo 3 números
-    public void ordenarTiempos() {
+    public void ordenarTiempos(){
         int menorIndex;
-        for (int j = 0; j < 3; j++) {
-            menorIndex = j;
-            for (int i = 0; i < 3; i++) {
-                if (tiempos[i] < tiempos[menorIndex]) {
-                    intercambio(i, menorIndex);
+        int vuelta = 0;
+        
+        while(vuelta < 3){
+            menorIndex = vuelta;
+            int i=vuelta;
+            for (; i < 3-vuelta; i++) {
+                if(tiempos[i] < tiempos[menorIndex] && tiempos[i] != 0){
                     menorIndex = i;
                 }
             }
+            intercambio(vuelta, menorIndex);
+            vuelta++;
         }
     }
+    
     public void intercambio(int indexActual, int menorIndex) {
         int aux = tiempos[indexActual];
         tiempos[indexActual] = tiempos[menorIndex];
