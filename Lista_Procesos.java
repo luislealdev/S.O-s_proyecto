@@ -32,11 +32,6 @@ public class Lista_Procesos{
                 calcularTiempos(nuevoProceso);
         }ordenarTiempos();
         
-        
-        //CADA QUE AGREGUE UN NUUVEO PROCESO MOSTRAREMOS LOS TIEMPOS QUE ENTREGE
-        for (int i = 0; i < 3; i++) {
-            System.out.print(tiempos[i]+"-");
-        }System.out.println("");
     }
     
     public void calcularTiempos(Proceso nuevoProceso){
@@ -46,17 +41,28 @@ public class Lista_Procesos{
     } 
 
     public void calcularTiemposDeNuevo(){
+        int numProceso = 1;
         Proceso aux = start;
-        Proceso vigilante = aux;
-        while(aux.next!= null){
-             if(aux == start){
-                 calcularTiempos(aux, null);
+        
+        /*while(numProceso <= size){
+            System.out.println("tiempo: "+aux.tiempo);
+            numProceso++;
+            aux = aux.next;
+            //System.out.println("P: "+aux.tiempo);
+        }*/
+
+        while(numProceso <= size){
+            if(numProceso <= 3){
+                aux.tiempoSalida = aux.tiempo;
+                tiempos[numProceso-1] = aux.tiempo;
+                //calcularTiempos(aux);
             }else{
-                 calcularTiempos(aux, vigilante);
+                calcularTiempos(aux);
             }
-             vigilante = aux;
-             aux = aux.next;
-        }calcularTiempos(aux, vigilante);
+            aux = aux.next;
+            numProceso++;
+            ordenarTiempos();
+        }
     }
     
     public void ordenarXnumero(){
@@ -87,9 +93,9 @@ public class Lista_Procesos{
             vueltas--;
         }
         calcularTiemposDeNuevo();
+        System.out.println("Debería volver a calcular los tiempos (si es necesario)");
     }
 
-    //Métodos para ordenar por atributo de cada proceso ()
     public void ordenarXtamaño(){
         Proceso auxInicioRelativo = start;
         Proceso auxMenor = start; 
@@ -118,6 +124,7 @@ public class Lista_Procesos{
         }
         
         calcularTiemposDeNuevo();
+        System.out.println("Debería volver a calcular los tiempos (si es necesario)");
     }
 
     public void ordenarXtiempo(){
@@ -147,6 +154,7 @@ public class Lista_Procesos{
             vueltas--;
         }
         calcularTiemposDeNuevo();
+        System.out.println("Debería volver a calcular los tiempos (si es necesario)");
     }
 
     public void intercambioProceso(Proceso menor, Proceso inicioRelativo){
@@ -166,7 +174,6 @@ public class Lista_Procesos{
         menor.tiempo = auxTiempo;
     }
     
-    //Métoo burbuja porque tengo entendido que gasta menos recursos que los demás (en este caso que son solo 3 números
     public void ordenarTiempos(){
         int menorIndex;
         int vuelta = 0;

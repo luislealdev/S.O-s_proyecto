@@ -41,7 +41,7 @@ public class Exe {
                     tiempo = Integer.parseInt(JOptionPane.showInputDialog("Insertar tiempo: "));
                     lista_espera.PUSH(nombre, numero, tamaño, tiempo); 
                     break;
-                /*case 2:
+                case 2:
                     System.out.println("<----- Procesos ordenados por tamaño ----->");
                     lista_espera.ordenarXtamaño();
                     lista_espera.mostrarDatosX();
@@ -55,7 +55,7 @@ public class Exe {
                     System.out.println("<----- Procesos ordenados por número ----->");
                     lista_espera.ordenarXnumero();
                     lista_espera.mostrarDatosX();
-                    break;*/
+                    break;
                 case 5:
                     System.out.println("<----- Procesos registrados ----->\n");
                     lista_espera.mostrarDatosX();
