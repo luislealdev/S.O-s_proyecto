@@ -10,9 +10,6 @@ public class Lista_Procesos{
     public void PUSH(String nombre, int numero, int tamaño, int tiempo){
         Proceso nuevoProceso = new Proceso(nombre, numero, tamaño, tiempo);
         size++;
-        
-        //No deberán calcularse los tiempos de llegada de los primeros 3 procesos en pasar, 
-        //ya que todos podrán ocupar un recurso que esté disponible
         if(size <= 3){
             if(size == 1){
                 start = nuevoProceso;
@@ -44,18 +41,10 @@ public class Lista_Procesos{
         int numProceso = 1;
         Proceso aux = start;
         
-        /*while(numProceso <= size){
-            System.out.println("tiempo: "+aux.tiempo);
-            numProceso++;
-            aux = aux.next;
-            //System.out.println("P: "+aux.tiempo);
-        }*/
-
         while(numProceso <= size){
             if(numProceso <= 3){
                 aux.tiempoSalida = aux.tiempo;
                 tiempos[numProceso-1] = aux.tiempo;
-                //calcularTiempos(aux);
             }else{
                 calcularTiempos(aux);
             }
@@ -93,7 +82,6 @@ public class Lista_Procesos{
             vueltas--;
         }
         calcularTiemposDeNuevo();
-        System.out.println("Debería volver a calcular los tiempos (si es necesario)");
     }
 
     public void ordenarXtamaño(){
@@ -124,7 +112,7 @@ public class Lista_Procesos{
         }
         
         calcularTiemposDeNuevo();
-        System.out.println("Debería volver a calcular los tiempos (si es necesario)");
+ 
     }
 
     public void ordenarXtiempo(){
@@ -154,7 +142,7 @@ public class Lista_Procesos{
             vueltas--;
         }
         calcularTiemposDeNuevo();
-        System.out.println("Debería volver a calcular los tiempos (si es necesario)");
+ 
     }
 
     public void intercambioProceso(Proceso menor, Proceso inicioRelativo){
