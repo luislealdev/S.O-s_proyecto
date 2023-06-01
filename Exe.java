@@ -9,13 +9,12 @@ public class Exe {
     public static void main(String[] args) {
 
         Lista_Procesos lista_espera = new Lista_Procesos();
-        lista_espera.PUSH("Alfredo", 100, 10, 15);
-        lista_espera.PUSH("Chaires", 50, 5, 12);
-        lista_espera.PUSH("Oski", 1, 15, 8);
-        lista_espera.PUSH("Leal", 3, 20, 3);
-        lista_espera.PUSH("Mario", 10, 15, 7);
-        lista_espera.PUSH("Tristeza", 1, 20, 4);
-        lista_espera.PUSH("La miss", 3, 10, 8);
+        lista_espera.PUSH("1", 100, 1, 5);
+        lista_espera.PUSH("2", 50, 2, 10);
+        lista_espera.PUSH("3", 1, 3, 4);
+        lista_espera.PUSH("4", 3, 4, 7);
+        lista_espera.PUSH("5", 10, 5, 3);
+        lista_espera.PUSH("6", 1, 6, 5);
         
         
         String nombre;
