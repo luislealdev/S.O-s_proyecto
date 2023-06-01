@@ -44,6 +44,127 @@ public class Lista_Procesos{
         nuevoProceso.tiempoSalida = tiempos[0] + nuevoProceso.tiempo;
         tiempos[0] = nuevoProceso.tiempoSalida;
     } 
+
+    public void calcularTiemposDeNuevo(){
+        Proceso aux = start;
+        Proceso vigilante = aux;
+        while(aux.next!= null){
+             if(aux == start){
+                 calcularTiempos(aux, null);
+            }else{
+                 calcularTiempos(aux, vigilante);
+            }
+             vigilante = aux;
+             aux = aux.next;
+        }calcularTiempos(aux, vigilante);
+    }
+    
+    public void ordenarXnumero(){
+        Proceso auxInicioRelativo = start;
+        Proceso auxMenor = start; 
+        Proceso aux = start;
+        int menorLista = start.numero;
+        int vueltas = size;
+        boolean cambioNecesario;
+
+
+        while(auxInicioRelativo.next != null){
+            cambioNecesario = false;
+            for (int i = 0; i < vueltas; i++) {
+                if(aux.numero < menorLista){
+                    menorLista = aux.numero;
+                    auxMenor = aux;
+                    cambioNecesario = true;
+                }aux = aux.next;
+            }
+
+            if(cambioNecesario){
+                intercambioProceso(auxMenor, auxInicioRelativo);
+            }
+            auxInicioRelativo = auxInicioRelativo.next;
+            auxMenor = aux = auxInicioRelativo;
+            menorLista = auxInicioRelativo.numero;
+            vueltas--;
+        }
+        calcularTiemposDeNuevo();
+    }
+
+    //Métodos para ordenar por atributo de cada proceso ()
+    public void ordenarXtamaño(){
+        Proceso auxInicioRelativo = start;
+        Proceso auxMenor = start; 
+        Proceso aux = start;
+        int menorLista = start.tamaño;
+        int vueltas = size;
+        boolean cambioNecesario;
+
+        while(auxInicioRelativo.next != null){
+            cambioNecesario = false;
+            for (int i = 0; i < vueltas; i++) {
+                if(aux.tamaño < menorLista){
+                    menorLista = aux.tamaño;
+                    auxMenor = aux;
+                    cambioNecesario = true;
+                }aux = aux.next;
+            }
+
+            if(cambioNecesario){
+                intercambioProceso(auxMenor, auxInicioRelativo);
+            }
+            auxInicioRelativo = auxInicioRelativo.next;
+            auxMenor = aux = auxInicioRelativo;
+            menorLista = auxInicioRelativo.tamaño;
+            vueltas--;
+        }
+        
+        calcularTiemposDeNuevo();
+    }
+
+    public void ordenarXtiempo(){
+        Proceso auxInicioRelativo = start;
+        Proceso auxMenor = start; 
+        Proceso aux = start;
+        int menorLista = start.tiempo;
+        int vueltas = size;
+        boolean cambioNecesario;
+
+        while(auxInicioRelativo.next != null){
+            cambioNecesario = false;
+            for (int i = 0; i < vueltas; i++) {
+                if(aux.tiempo < menorLista){
+                    menorLista = aux.tiempo;
+                    auxMenor = aux;
+                    cambioNecesario = true;
+                }aux = aux.next;
+            }
+
+            if(cambioNecesario){
+                intercambioProceso(auxMenor, auxInicioRelativo);
+            }
+            auxInicioRelativo = auxInicioRelativo.next;
+            auxMenor = aux = auxInicioRelativo;
+            menorLista = auxInicioRelativo.tiempo;
+            vueltas--;
+        }
+        calcularTiemposDeNuevo();
+    }
+
+    public void intercambioProceso(Proceso menor, Proceso inicioRelativo){
+        String auxNombre = inicioRelativo.nombre;
+        int auxNum = inicioRelativo.numero;
+        int auxTam = inicioRelativo.tamaño;
+        int auxTiempo = inicioRelativo.tiempo;
+
+        inicioRelativo.nombre = menor.nombre;
+        inicioRelativo.numero = menor.numero;
+        inicioRelativo.tamaño = menor.tamaño;
+        inicioRelativo.tiempo = menor.tiempo;
+
+        menor.nombre = auxNombre;
+        menor.numero = auxNum;
+        menor.tamaño = auxTam;
+        menor.tiempo = auxTiempo;
+    }
     
     //Métoo burbuja porque tengo entendido que gasta menos recursos que los demás (en este caso que son solo 3 números
     public void ordenarTiempos(){
