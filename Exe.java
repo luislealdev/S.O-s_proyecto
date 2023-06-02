@@ -10,12 +10,12 @@ public class Exe {
 
     public static void main(String[] args) {
         Lista_Procesos lista_espera = new Lista_Procesos();
-        lista_espera.PUSH("1", 7, 1, 5);
-        lista_espera.PUSH("2", 8, 2, 9);
-        lista_espera.PUSH("3", 1, 3, 4);
-        lista_espera.PUSH("4", 3, 4, 7);
-        lista_espera.PUSH("5", 8, 5, 3);
-        lista_espera.PUSH("6", 1, 6, 5);
+        lista_espera.PUSH("1", 1, 10, 9);
+        lista_espera.PUSH("2", 2, 5, 3);
+        lista_espera.PUSH("3", 3, 15, 10);
+        lista_espera.PUSH("4", 4, 8, 7);
+        lista_espera.PUSH("5", 5, 20, 3);
+        lista_espera.PUSH("6", 6, 10, 5);
 
         String nombre;
         int numero, tamaño, tiempo;
@@ -124,13 +124,17 @@ public class Exe {
                     String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", "Nombre", "Número", "Tamaño",
                             "Tiempo", "Tiempo de llegada",
                             "Tiempo de salida", "Tiempo en ejecución"));
-            while (aux.next != null) {
+            do {
                 escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
                         aux.numero, aux.tamaño,
-                        aux.tiempo, aux.tiempoEnEjecucion, aux.tiempoLlegada,
-                        aux.tiempoSalida));
+                        aux.tiempo, aux.tiempoLlegada,
+                        aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
                 aux = aux.next;
-            }
+            } while (aux.next != null);
+            escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
+                    aux.numero, aux.tamaño,
+                    aux.tiempo, aux.tiempoLlegada,
+                    aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
 
             // Guardar orden por número
             escritor.write("-----------Órden por número------------\n");
@@ -140,13 +144,17 @@ public class Exe {
                     String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", "Nombre", "Número", "Tamaño",
                             "Tiempo", "Tiempo de llegada",
                             "Tiempo de salida", "Tiempo en ejecución"));
-            while (aux.next != null) {
+            do {
                 escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
                         aux.numero, aux.tamaño,
-                        aux.tiempo, aux.tiempoEnEjecucion, aux.tiempoLlegada,
-                        aux.tiempoSalida));
+                        aux.tiempo, aux.tiempoLlegada,
+                        aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
                 aux = aux.next;
-            }
+            } while (aux.next != null);
+            escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
+                    aux.numero, aux.tamaño,
+                    aux.tiempo, aux.tiempoLlegada,
+                    aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
 
             // Guardar en orden por tamaño
             lista.ordenarXtamaño();
@@ -156,13 +164,17 @@ public class Exe {
                     String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", "Nombre", "Número", "Tamaño",
                             "Tiempo", "Tiempo de llegada",
                             "Tiempo de salida", "Tiempo en ejecución"));
-            while (aux.next != null) {
+            do {
                 escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
                         aux.numero, aux.tamaño,
-                        aux.tiempo, aux.tiempoEnEjecucion, aux.tiempoLlegada,
-                        aux.tiempoSalida));
+                        aux.tiempo, aux.tiempoLlegada,
+                        aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
                 aux = aux.next;
-            }
+            } while (aux.next != null);
+            escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
+                    aux.numero, aux.tamaño,
+                    aux.tiempo, aux.tiempoLlegada,
+                    aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
 
             // Guardar en orden por tiempo
             lista.ordenarXtiempo();
@@ -172,13 +184,17 @@ public class Exe {
                     String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", "Nombre", "Número", "Tamaño",
                             "Tiempo", "Tiempo de llegada",
                             "Tiempo de salida", "Tiempo en ejecución"));
-            while (aux.next != null) {
+            do {
                 escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
                         aux.numero, aux.tamaño,
-                        aux.tiempo, aux.tiempoEnEjecucion, aux.tiempoLlegada,
-                        aux.tiempoSalida));
+                        aux.tiempo, aux.tiempoLlegada,
+                        aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
                 aux = aux.next;
-            }
+            } while (aux.next != null);
+            escritor.write(String.format("%-8s %-8s %-8s %-8s %-22s %-22s %-22s%n", aux.nombre,
+                    aux.numero, aux.tamaño,
+                    aux.tiempo, aux.tiempoLlegada,
+                    aux.tiempoSalida, aux.tiempoSalida-aux.tiempoLlegada));
 
             // Guardar texto para dividir
             escritor.write("\n-----------FIN PROCESOS------------\n\n");
